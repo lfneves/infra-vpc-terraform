@@ -21,7 +21,7 @@ resource "aws_vpc" "my_vpc" {
 resource "aws_subnet" "my_subnet" {
   count           = 2
   vpc_id          = aws_vpc.my_vpc.id
-  cidr_block      = "10.0.0.0/20"
+  cidr_block      = "10.0.0.0/24"
   availability_zone = "us-east-1a"
 }
 
