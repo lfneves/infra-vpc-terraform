@@ -47,5 +47,5 @@ resource "aws_security_group" "eks_sg" {
 
 resource "aws_db_subnet_group" "rds_subnet_group" {
   name       = "rds-subnet-group"
-  subnet_ids = aws_subnet.my_subnet[0].id
+  subnet_ids = aws_subnet.my_subnet[*].id
 }
