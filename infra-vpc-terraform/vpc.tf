@@ -1,15 +1,15 @@
 provider "aws" {
-  region = "us-east-1"  # Change to your desired region
+  region = "us-east-1"
 }
 
 resource "aws_vpc" "my_vpc" {
-  cidr_block = "10.0.0.0/16"  # Update the CIDR block as needed
+  cidr_block = "10.0.0.0/16"
 }
 
 resource "aws_subnet" "my_subnet" {
   count           = 2
   vpc_id          = aws_vpc.my_vpc.id
-  cidr_block      = "10.0.1.0/24"  # Update with appropriate subnets
+  cidr_block      = "10.0.1.0/24"
   availability_zone = element(["us-east-1a", "us-east-1b"], count.index)
 }
 
