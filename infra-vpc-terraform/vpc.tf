@@ -21,8 +21,8 @@ resource "aws_vpc" "my_vpc" {
 resource "aws_subnet" "my_subnet" {
   count           = 2
   vpc_id          = aws_vpc.my_vpc.id
-  cidr_block      = "10.0.1.0/24"
-  availability_zone = element(["us-east-1a", "us-east-1b"], count.index)
+  cidr_block      = "10.0.0.0/20"
+  availability_zone = "us-east-1a"
 }
 
 resource "aws_internet_gateway" "my_igw" {
