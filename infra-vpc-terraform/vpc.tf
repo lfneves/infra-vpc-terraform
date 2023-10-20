@@ -20,7 +20,6 @@ resource "aws_vpc" "my_vpc" {
 
 resource "aws_subnet" "my_subnet" {
   count           = 2
-  name = "delivery-subnet"
   vpc_id          = aws_vpc.my_vpc.id
   cidr_block      = "10.0.4.0/24"
   availability_zone = element(["us-east-1a", "us-east-1b"], count.index)
@@ -35,7 +34,6 @@ resource "aws_route_table" "my_route_table" {
 }
 
 resource "aws_route" "route_to_internet" {
-  name = "delivery-route"
   route_table_id = aws_route_table.my_route_table.id
   destination_cidr_block = "10.0.8.0/24"
   gateway_id = aws_internet_gateway.my_igw.id
