@@ -4,6 +4,18 @@ provider "aws" {
 
 resource "aws_vpc" "my_vpc" {
   cidr_block = "10.0.2.0/24"
+  instance_tenancy     = "default"
+  enable_dns_support   = true
+  enable_dns_hostnames = true
+
+  tags = {
+    Environment = var.environment
+    Name = "delivery-vpc"
+  }
+
+    lifecycle {
+    ignore_changes = [tags]
+  }
 }
 
 resource "aws_subnet" "my_subnet" {
