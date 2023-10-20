@@ -35,7 +35,7 @@ resource "aws_route_table" "my_route_table" {
 
 resource "aws_route" "route_to_internet" {
   route_table_id = aws_route_table.my_route_table.id
-  destination_cidr_block = "10.0.8.0/24"
+  destination_cidr_block = "10.0.16.0/24"
   gateway_id = aws_internet_gateway.my_igw.id
 }
 
@@ -47,5 +47,5 @@ resource "aws_security_group" "eks_sg" {
 
 resource "aws_db_subnet_group" "rds_subnet_group" {
   name       = "rds-subnet-group"
-  subnet_ids = aws_subnet.my_subnet[*].id
+  subnet_ids = aws_subnet.my_subnet[0].id
 }
