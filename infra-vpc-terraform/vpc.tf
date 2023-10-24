@@ -43,6 +43,13 @@ resource "aws_security_group" "eks_sg" {
   name        = "eks_security_group"
   description = "EKS Security Group"
   vpc_id      = aws_vpc.my_vpc.id
+
+  ingress {
+    from_port   = 0
+    to_port     = 65535
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
 
 resource "aws_db_subnet_group" "rds_subnet_group" {
